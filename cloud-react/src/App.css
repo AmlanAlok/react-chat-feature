@@ -46,3 +46,24 @@
   background-color: coral;
   width: 100%;
 }
+
+.c {
+  background-color: goldenrod;
+}
+
+.left-position {
+  float: left;
+}
+
+.right-position {
+  float: right
+}
+
+.chatBox-position {
+  background-color: lightcoral;
+}
+
+/* .chat-list-position {
+  z-index: 1;
+  position: left;
+} */
