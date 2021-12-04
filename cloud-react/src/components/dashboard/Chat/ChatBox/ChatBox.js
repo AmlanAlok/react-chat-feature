@@ -21,7 +21,7 @@ function ChatBox(props) {
         console.log('previousId =', previousId)
         let newChatObj = {
             id: previousId+1,
-            senderId: 1,
+            senderId: props.userId,
             receiverId: props.receiverChatBoxData.receiverId,
             message: newChatMessage
         }
@@ -40,7 +40,8 @@ function ChatBox(props) {
                 <div>
                     {chatMessageList.map(chat => {
                         return (
-                            <div key = {chat.id}>{chat.message}</div>
+                            props.userId == chat.senderId ? (<div className = "chat-sender-position" key = {chat.id}>{chat.message}</div>) : 
+                            (<div className = "chat-receiver-position" key = {chat.id}>{chat.message}</div>)
                         )
                     }
 

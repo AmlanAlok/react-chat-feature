@@ -23,7 +23,7 @@ function Login() {
         console.log('inside login status ='+ loginStatus)
         console.log('useeffect userId = ' + userId)
 
-        if (loginStatus === 'success' && userId != undefined && userId != ''){
+        if (loginStatus === 'success' && userId !== undefined && userId !== ''){
             history.push('/dashboard/'+userId)
             // history.push({
             //     pathname: '/dashboard',

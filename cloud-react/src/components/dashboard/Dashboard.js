@@ -10,8 +10,9 @@ function Dashboard() {
     const {userId} = useParams();
     const [showChatList, setShowChatList] = useState(false)
     // const [leftMenu, setLeftMenu] = useState(['Home', 'Chat'])
-    // const [chats, setChats] = useState([[
-    const chats = [    
+    const [chats, setChats] = useState([])
+    
+    const chats1 = [    
         {
           "receiverId": 2,
           "firstName": "Arya",
@@ -56,6 +57,64 @@ function Dashboard() {
             ]
         }
         ]
+    const chats2 = [    
+        {
+          "receiverId": 1,
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "chatMessages": [
+            {
+              id: 1,
+              senderId: 1,
+              receiverId: 2,
+              message: "Hi Arya",
+              messageTimestamp: "2021-11-19T17:39:19.000+00:00"
+            },
+            {
+              id: 2,
+              senderId: 2,
+              receiverId: 1,
+              message: "Hi Jon",
+              messageTimestamp: "2021-11-19T17:39:19.000+00:00"
+            }
+            ]
+        },
+        {
+            "receiverId": 4,
+            "firstName": "Bran",
+            "lastName": "Stark",
+            "chatMessages": [
+              {
+                id: 1,
+                senderId: 4,
+                receiverId: 2,
+                message: "Hi Arya",
+                messageTimestamp: "2021-11-19T17:39:19.000+00:00"
+              },
+              {
+                id: 2,
+                senderId: 2,
+                receiverId: 4,
+                message: "Hi Bran",
+                messageTimestamp: "2021-11-19T17:39:19.000+00:00"
+              }
+              ]
+          }
+        ]
+
+    useEffect(() => {
+        console.log('Loading Dashboard')
+        if (userId == 1){
+            console.log('userId = 1')
+            setChats(chats1)
+        }
+        else {
+            console.log('userId = 2')
+            setChats(chats2)
+        }
+    }, []);
+
+    
 
     return (
         <div>
@@ -74,7 +133,7 @@ function Dashboard() {
 
                 {/* <div className ="col-sm-9 b right-position"> */}
                 <div className = "col-sm-9 c">
-                    {showChatList && <Chat chats = {chats}/>}
+                    {showChatList && <Chat chats = {chats} userId={userId} />}
                 </div>
             </div>
             

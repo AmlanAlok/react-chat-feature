@@ -15,20 +15,23 @@ function Chat(props) {
     return (
         <div>
             <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-2">
                     
                     { props.chats.map(receiver => {
+                        
                         return (
-                            // <div>
-                            // <button key = {receiver.receiverId} onClick = {openChatBox(receiver)}>  // This line is an issue
-                            // https://stackoverflow.com/questions/59304283/error-too-many-re-renders-react-limits-the-number-of-renders-to-prevent-an-in?rq=1
-                                <button key = {receiver.receiverId} onClick = {() => openChatBox(receiver)}>{receiver.firstName} {receiver.lastName}</button>
+                            // {/* // <div> */}
+                            // {/* // <button key = {receiver.receiverId} onClick = {openChatBox(receiver)}>  // This line is an issue */}
+                            // {/* // https://stackoverflow.com/questions/59304283/error-too-many-re-renders-react-limits-the-number-of-renders-to-prevent-an-in?rq=1 */}
+                                <button className = "chat-title-design" key = {receiver.receiverId} onClick = {() => openChatBox(receiver)}>{receiver.firstName} {receiver.lastName}</button>
                             
                         )
+                        
+                        
                     })}
                 </div>
                 <div className="col-sm-8">
-                    {showChatBox && <ChatBox receiverChatBoxData = {receiverChatBoxData} />}
+                    {showChatBox && <ChatBox receiverChatBoxData = {receiverChatBoxData} userId = {props.userId} />}
                 </div>
             </div>
         </div>
