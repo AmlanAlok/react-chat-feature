@@ -8,12 +8,64 @@ function ChatBox(props) {
 
     let ip_address = '127.0.0.1';
     let socket_port = '9000';
-    // let socket = io(ip_address + ':' + socket_port);
-    // let socket
+    let socket = io(ip_address + ':' + socket_port);
+    
+    socket.on('sendChatToReceiverFromSender', (receivedChatMsg, receiverId, senderId) => {
+        console.log('inside sendChatToReceiverFromSender')
+        console.log(receivedChatMsg, receiverId, senderId)
+        if (props.userId == receiverId && props.receiverChatBoxData.receiverId == senderId){
+            console.log('inside if')
+            let numOfChats = chatMessageList.length
+            console.log('numOfchats =', numOfChats)
+            let lastChat = chatMessageList[numOfChats-1];
+            console.log(lastChat)
+            let previousId = lastChat.id
+            console.log('previousId =', previousId)
+            let newDisplayChatObj = {
+                id: previousId+1,
+                senderId: senderId,
+                receiverId: receiverId,
+                message: receivedChatMsg
+            }
+            console.log(newDisplayChatObj)
+            let newDisplayChatMsgArray = chatMessageList.concat(newDisplayChatObj);
+            setChatMessageList(newDisplayChatMsgArray)
+
+        }
+        else{
+            console.log('inside else')
+        }
+    })
 
     function sendChatMessageToReceiver(message, senderUserId, receiverUserId) {
-        let socket = io(ip_address + ':' + socket_port);
+        // let socket = io(ip_address + ':' + socket_port);
         socket.emit('sendMsgFromSenderToReceiver', message, senderUserId, receiverUserId);
+
+        // socket.on('sendChatToReceiverFromSender', (receivedChatMsg, receiverId, senderId) => {
+        //     console.log('inside sendChatToReceiverFromSender')
+        //     if (props.userId == receiverId && props.receiverChatBoxData.receiverId == senderId){
+        //         console.log('inside if')
+        //         let numOfChats = chatMessageList.length
+        //         console.log('numOfchats =', numOfChats)
+        //         let lastChat = chatMessageList[numOfChats-1];
+        //         console.log(lastChat)
+        //         let previousId = lastChat.id
+        //         console.log('previousId =', previousId)
+        //         let newDisplayChatObj = {
+        //             id: previousId+1,
+        //             senderId: senderId,
+        //             receiverId: receiverId,
+        //             message: newChatMessage
+        //         }
+        //         console.log(newDisplayChatObj)
+        //         let newDisplayChatMsgArray = chatMessageList.concat(newDisplayChatObj);
+        //         setChatMessageList(newDisplayChatMsgArray)
+
+        //     }
+        //     else{
+        //         console.log('inside else')
+        //     }
+        // })
     }
 
     // useEffect(() => {
