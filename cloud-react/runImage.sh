@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "String script"
+echo "Starting script"
 
 echo "Building docker image"
 docker build -t 5333-react-chat .
