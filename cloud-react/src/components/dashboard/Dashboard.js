@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Chat from './Chat/Chat';
 
 function Dashboard() {
 
-    const [userId, setUserId] = useState(1)
+    // const [userId, setUserId] = useState(props.userId)
+    const {userId} = useParams();
     const [showChatList, setShowChatList] = useState(false)
     // const [leftMenu, setLeftMenu] = useState(['Home', 'Chat'])
-    const leftMenu = ['Home', 'Chat'];
     // const [chats, setChats] = useState([[
     const chats = [    
         {
@@ -56,16 +56,6 @@ function Dashboard() {
             ]
         }
         ]
-        
-    // function toggleChatList() {
-    //     console.log('inside toggleChatList')
-    //     if (showChatList){
-    //         setShowChatList(true)
-    //     }
-    //     else{
-    //         setShowChatList(false)
-    //     }
-    // }
 
     return (
         <div>

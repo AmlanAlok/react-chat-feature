@@ -21,14 +21,19 @@ function Login() {
     useEffect(() => {
         console.log('inside useEffect')
         console.log('inside login status ='+ loginStatus)
+        console.log('useeffect userId = ' + userId)
 
-        if (loginStatus === 'success'){
-            history.push('/dashboard')
+        if (loginStatus === 'success' && userId != undefined && userId != ''){
+            history.push('/dashboard/'+userId)
+            // history.push({
+            //     pathname: '/dashboard',
+            //     state: {userId: userId}
+            // });
         }
         else {
             console.log('login failed')
         }
-    }, [loginStatus]);
+    }, [loginStatus, userId]);
 
     function login() {
         const loginObj = {
@@ -46,9 +51,11 @@ function Login() {
 
                 
                 
-                setUserId(res.data.userId)
+                
                 setLoginStatus(res.data.data.loginStatus)
+                setUserId(res.data.data.userId)
                 console.log('login status ='+ loginStatus)
+                console.log('userId ='+ userId)
 
             }
             else{

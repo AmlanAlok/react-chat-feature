@@ -12,18 +12,6 @@ function ChatBox(props) {
     }
 
     function addNewChatToList(){
-        // let numOfChats = props.receiverChatBoxData.chatMessages.length
-        // console.log('numOfchats =', numOfChats)
-        // let lastChat = props.receiverChatBoxData.chatMessages[numOfChats-1];
-        // console.log(lastChat)
-        // let previousId = lastChat.id
-        // let newChatObj = {
-        //     id: previousId+1,
-        //     senderId: 1,
-        //     receiverId: props.receiverChatBoxData.receiverId,
-        //     message: newChatMessage
-        // }
-        // let newChatMsgArray = props.receiverChatBoxData.chatMessages.concat(newChatObj);
         
         let numOfChats = chatMessageList.length
         console.log('numOfchats =', numOfChats)
